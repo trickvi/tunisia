@@ -4,23 +4,17 @@ layout: default
 
 <h1 class="page-header main-header">{{ site.frontpage.title }}</h1>
 
-<div class=row">
-  <div class="treemap" data-dataset="uppgjor-rikissjods" data-drilldowns="from,to"></div>
-</div>
-
-<div class="row spaced well">
-  <div class="span7">
-    <p>
-      {{ site.frontpage.openspending }}
-    </p>
+<div class="row">
+  <div class="span6">
+     <div class="well">
+     <h2>Look at budget data for Tunisia</h2>
+     <a href="{{site.subdirectory}}/bidget.html" class="btn btn-large">Examine the budget</a>
+     </div>
   </div>
-  <div class="span4 pull-right">
-    <a href="http://openspending.org">
-      <img src="{{site.subdirectory}}/img/openspending.png" alt="OpenSpending" />
-    </a>
+  <div class="span6">
+     <div class="well">
+     <h2>Look at spending data for Tunisia</h2>
+     <a href="{{site.subdirectory}}/paiement.html" class="btn btn-large">Examine the spending</a>
+     </div>
   </div>
 </div>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<link href="{{site.subdirectory}}/css/openspending-tunisia-0.0.1.min.css" rel="stylesheet">
-<script src="{{site.subdirectory}}/js/openspending-tunisia-0.0.1.min.js"></script>

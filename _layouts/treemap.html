@@ -1,0 +1,56 @@
+---
+layout: default
+---
+
+<h1 class="page-header main-header">{{ site.frontpage.title }}</h1>
+
+<div class="row">
+<div class="span12">
+{% for year in page.years %}
+<a id="{{year}}" href="#" class="year btn btn-small">{{year}}</a>
+{% endfor %}
+</div>
+</div>
+<div class=row">
+  <h2 id="treemap-header"></h2>
+  <div id="treemap"></div>
+</div>
+
+<div class="row spaced well">
+  <div class="span7">
+    <p>
+      {{ site.frontpage.openspending }}
+    </p>
+  </div>
+  <div class="span4 pull-right">
+    <a href="http://openspending.org">
+      <img src="{{site.subdirectory}}/img/openspending.png" alt="OpenSpending" />
+    </a>
+  </div>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link href="{{site.subdirectory}}/css/openspending-tunisia-0.0.1.min.css" rel="stylesheet">
+<script src="{{site.subdirectory}}/js/openspending-tunisia-0.0.1.min.js"></script>
+<script type="text/javascript">
+var create_treemap = function(year) {
+    $('#treemap').empty();
+    $('#treemap-header').text(year);
+    $('#'+year).addClass('disabled');
+    $('#treemap').treemap({
+        data: {
+            dataset:'{{ page.dataset }}',
+            drilldowns:['department','titre','partie','article','paragraph','sous-paragraph'],
+            year: year
+        }
+    });
+}
+
+$('.year').click(function() {
+    $('.year.disabled').removeClass('disabled');
+    create_treemap(parseInt($(this).text()));
+    return false;
+});
+
+create_treemap(2012);
+</script>
